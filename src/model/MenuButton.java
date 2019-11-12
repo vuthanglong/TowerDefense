@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,6 +17,7 @@ public class MenuButton extends Button {
 
     public MenuButton(String text) {
         setText(text);
+        setTextFill(Color.WHITE);
         setButtonFont();
         setPrefHeight(49);
         setPrefWidth(190);
