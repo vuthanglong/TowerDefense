@@ -1,4 +1,4 @@
-package entity.map;
+package Entity.Map;
 
 import javafx.event.EventHandler;
 import javafx.scene.effect.DropShadow;
@@ -8,9 +8,10 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 public class Mountain extends ImageView {
+    private boolean isActive = false;
 
     public Mountain() {
-        super(new Image("model/resources/mountain.png"));
+        super(new Image("Model/Images/mountain.png"));
         initializeTowerListeners();
     }
 
@@ -19,7 +20,7 @@ public class Mountain extends ImageView {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
-
+                    isActive = true;
                 }
             }
         });
@@ -44,6 +45,7 @@ public class Mountain extends ImageView {
 
             }
         });
-
     }
+
+
 }

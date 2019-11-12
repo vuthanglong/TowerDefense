@@ -1,35 +1,53 @@
-package view;
+package View;
 
-import entity.enemy.NormalEnemy;
-import entity.map.Road;
-import entity.map.Mountain;
+import Entity.Enemies.Enemy;
 
-import entity.tower.NormalTower;
-import entity.tower.bullet.NormalBullet;
+import Entity.Enemies.NormalEnemy;
+import Entity.Map.Mountain;
+import Entity.Map.Road;
+import Entity.Towers.Bullets.Bullet;
+import Entity.Towers.Bullets.NormalBullet;
+import Entity.Towers.NormalTower;
+
+import Entity.Towers.Tower;
+import Model.Button.MenuButton;
+
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.MenuButton;
+
 import sample.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameViewManager {
-
     private AnchorPane gamePane;
     private Scene gameScene;
     private Stage gameStage;
-
     private Stage menuStage;
 
     public static final int GAME_WIDTH = 900;
     public static final int GAME_HEIGHT = 600;
+
+    private Image BACKGROUND = new Image("Model/Images/background.png");
+    private ImageView background = new ImageView(BACKGROUND);
+
+    private Player player = new Player();
+
+    private List<Enemy> enemies = new ArrayList<>();
+    private List<Mountain> mountains = new ArrayList<>();
+    private List<Road> roads = new ArrayList<>();
+    private List<Tower> towers = new ArrayList<>();
+    private List<Bullet> bullets = new ArrayList<>();
+
+    private AnimationTimer timer;
 
     public void createNewGame(Stage menuStage) {
         this.menuStage = menuStage;
@@ -37,21 +55,10 @@ public class GameViewManager {
         gameStage.setTitle("Tower Defense");
         gameStage.show();
     }
+
     public GameViewManager() {
         initializeStage();
     }
-    private Image BACKGROUND = new Image("model/resources/background.png");
-    private ImageView background = new ImageView(BACKGROUND);
-
-    private Player player = new Player();
-
-    private List<NormalEnemy> enemies = new ArrayList<>();
-    private List<Mountain> mountains = new ArrayList<>();
-    private List<Road> roads = new ArrayList<>();
-    private List<NormalTower> towers = new ArrayList<>();
-    private List<NormalBullet> bullets = new ArrayList<>();
-
-    private AnimationTimer timer;
 
     private void initializeStage() {
         gamePane = new AnchorPane();
@@ -70,8 +77,8 @@ public class GameViewManager {
     }
 
     private void onUpdate() {
-        for(NormalEnemy enemy : enemies)
-            if(!enemy.dead) enemy.move();
+        for(Enemy enemy : enemies)
+            if(!enemy.isDead()) enemy.move();
         if (Math.random() < 0.0075) {
             enemies.add(spawnEnemy());
         }
@@ -87,48 +94,46 @@ public class GameViewManager {
 
     private void checkState() {
         for (int i = enemies.size() - 1; i >= 0; i--) {
-            NormalEnemy enemy = enemies.get(i);
-            if(enemy.passed() && !enemy.dead) {
+            Enemy enemy = enemies.get(i);
+            if(enemy.isPassed() && !enemy.isDead()) {
                 player.getDamage();
-                enemy.dead = true;
+                enemy.setDead(true);
                 enemy.doDestroy();
                 enemies.remove(i);
             }
-            if(enemy.HP <= 0) {
-                enemy.dead = true;
+            if(enemy.getHP() <= 0) {
+                enemy.setDead(true);
                 enemy.doDestroy();
-                player.getReward(enemy.reward);
+                player.getReward(enemy.getReward());
                 enemies.remove(i);
             }
         }
-        for (NormalTower tower : towers) {
-            if(tower.target != null) {
-                if(checkDistance(tower.target, tower) > tower.range || tower.target.dead || tower.target.passed()) {
+        for (Tower tower : towers) {
+            if(tower.getTarget() != null) {
+                if(checkDistance(tower.getTarget(), tower) > tower.getRange() || tower.getTarget().isDead() || tower.getTarget().isPassed()) {
                     tower.setTarget(null);
                 }
             }
-            if(tower.target == null) {
-                for(NormalEnemy enemy : enemies) {
-                    if(checkDistance(enemy, tower) < tower.range && tower.target == null) {
+            if(tower.getTarget() == null) {
+                for(Enemy enemy : enemies) {
+                    if(checkDistance(enemy, tower) < tower.getRange() && tower.getTarget() == null) {
                         tower.setTarget(enemy);
                     }
                 }
             }
-            if(tower.target != null) {
+            if(tower.getTarget() != null) {
                 if(tower.canShot()) {
-                    NormalBullet bullet = new NormalBullet(tower, tower.target);
+                    Bullet bullet = new NormalBullet(tower, tower.getTarget());
                     bullets.add(bullet);
-                    gamePane.getChildren().add(bullet);
-                    tower.lastAtk = System.currentTimeMillis();
+                    gamePane.getChildren().add((Node) bullet);
+                    tower.setLastAtk(System.currentTimeMillis());
                 }
             }
         }
         for (int i = bullets.size() - 1; i >= 0 ; i--) {
-            NormalBullet bullet = bullets.get(i);
+            Bullet bullet = bullets.get(i);
             if(bullet.doDestroy()) {
-                bullet.target.getDamage(10);
-                //System.out.println("dau buoi");
-                bullet.target.getDamage(bullet.damage);
+                bullet.getTarget().beGetDamage(bullet.getDamage());
                 gamePane.getChildren().remove(bullet);
                 bullets.remove(i);
             }
@@ -147,7 +152,7 @@ public class GameViewManager {
             roads.add(new Road(120 + 60 * i,60 + 60 * 5));
         }
         for (int i = 0; i < 20; i++) {
-            roads.get(i).nextRoad = roads.get(i + 1);
+            roads.get(i).setNextRoad(roads.get(i + 1));
         }
         for (Road road : roads) {
             gamePane.getChildren().add(road);
@@ -181,21 +186,23 @@ public class GameViewManager {
             }
         }
     }
+
     private void buildTower(Mountain mountain) {
         gamePane.getChildren().remove(mountain);
-        NormalTower tower = new NormalTower(mountain.getTranslateX(), mountain.getTranslateY());
+        Tower tower = new NormalTower(mountain.getTranslateX(), mountain.getTranslateY());
         towers.add(tower);
-        gamePane.getChildren().add(tower);
+        gamePane.getChildren().add((Node) tower);
     }
-    private NormalEnemy spawnEnemy() {
-        NormalEnemy enemy = new NormalEnemy();
+
+    private Enemy spawnEnemy() {
+        Enemy enemy = new NormalEnemy();
         enemy.setCurrentRoad(roads.get(0));
-        gamePane.getChildren().add(enemy);
+        gamePane.getChildren().add((Node) enemy);
         gamePane.getChildren().addAll(enemy.getOuterHealthRect(), enemy.getInnerHealthRect());
         return enemy;
     }
 
-    private double checkDistance(NormalEnemy enemy, NormalTower tower) {
+    private double checkDistance(Enemy enemy, Tower tower) {
         return Math.sqrt( (enemy.getTranslateX() - tower.getTranslateX()) * (enemy.getTranslateX() - tower.getTranslateX())
                 + ( enemy.getTranslateY() - tower.getTranslateY()) * ( enemy.getTranslateY() - tower.getTranslateY())) ;
     }

@@ -2,7 +2,8 @@ package sample;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import view.ViewManager;
+
+import View.ViewManager;
 
 public class Main extends Application {
 

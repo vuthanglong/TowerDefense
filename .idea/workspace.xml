@@ -1,19 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="nothing">
-      <change afterPath="$PROJECT_DIR$/src/model/resources/button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/resources/button_pressed.png" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="thay doi model button">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Own/META-INF/Own.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/enemy/NormalEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Own/entity/enemy/NormalEnemy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Own/model/MenuButton$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Own/model/MenuButton$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Own/model/MenuButton$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Own/model/MenuButton$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Own/model/MenuButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Own/view/GameViewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Own/view/GameViewManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MenuButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Own.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Own.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/enemy/HealthBar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/enemy/NormalEnemy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/map/Mountain$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/map/Mountain$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/map/Mountain$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/map/Mountain$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/map/Mountain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/map/Road.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/tower/NormalTower$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/tower/NormalTower$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/tower/NormalTower$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/tower/NormalTower$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/tower/NormalTower.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/entity/tower/bullet/NormalBullet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/MenuButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/1x/Asset 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/1x/Untitled-1.ai" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/1x/Untitled-2.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/SF Atarian System Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/enemy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/mountain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/tower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/yellow_button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/model/resources/yellow_button_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/sample/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/sample/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/sample/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/view/GameViewManager$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/view/GameViewManager$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/view/GameViewManager$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/view/GameViewManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/view/ViewManager$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Own/view/ViewManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/enemy/HealthBar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/enemy/NormalEnemy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/map/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/map/Mountain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/map/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/map/Road.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/tower/NormalTower.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/tower/bullet/NormalBullet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/MenuButton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/1x/Asset 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/1x/Untitled-1.ai" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/1x/Untitled-2.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/SF Atarian System Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/button_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/enemy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/mountain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/tower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/yellow_button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/resources/yellow_button_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GameViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameViewManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ViewManager.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,6 +121,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -82,7 +135,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectId" id="1TBOCfSFKOwa6Ym0g0sv4KB0HhR" />
+  <component name="ProjectId" id="1TWOh1cFy2vlZA2xXsoiI7NQxDe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -90,7 +143,6 @@
     <option name="STATE" value="0" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -101,16 +153,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\2.work\1.code\game oop\Own\src\model\resources" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -145,7 +188,7 @@
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
-      <module name="Own" />
+      <module name="Game" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -209,14 +252,6 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
-    <task id="LOCAL-00001" summary="nothing">
-      <created>1573560807163</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1573560807163</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -227,9 +262,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -237,12 +270,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <ignored-roots>
-      <path value="$PROJECT_DIR$/TowerDefense" />
-    </ignored-roots>
-    <MESSAGE value="nothing" />
-    <option name="LAST_COMMIT_MESSAGE" value="nothing" />
   </component>
 </project>

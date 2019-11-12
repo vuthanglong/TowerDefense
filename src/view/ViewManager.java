@@ -1,15 +1,15 @@
-package view;
+package View;
 
+import Model.Button.MenuButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.MenuButton;
 
 public class ViewManager {
-    private static final int HEIGHT = 600;
-    private static final int WIDTH = 900;
+    public static final int HEIGHT = 600;
+    public static final int WIDTH = 900;
     private AnchorPane mainPane;
     private Scene mainScene;
     private Stage mainStage;
@@ -19,17 +19,17 @@ public class ViewManager {
         mainScene = new Scene(mainPane,WIDTH,HEIGHT);
         mainStage = new Stage();
         mainStage.setScene(mainScene);
-        createButtons("START",350,350);
+        createButtons("Start");
     }
 
     public Stage getMainStage() {
         return mainStage;
     }
 
-    private void createButtons(String text, int x, int y) {
+    public void createButtons(String text) {
         MenuButton button = new MenuButton(text);
-        button.setLayoutY(y);
-        button.setLayoutX(x);
+        button.setLayoutY(350);
+        button.setLayoutX(350);
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
