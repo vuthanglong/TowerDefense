@@ -23,8 +23,7 @@ public class NormalEnemy extends ImageView implements Enemy, EnemiesInfo {
     private int reward;
 
     public NormalEnemy() {
-        super(new Image("Model/Images/enemy.png"));
-
+        super(new Image(EnemiesInfo.NORMAL_ENEMY_IMAGE_PATH));
         setMaxHP(EnemiesInfo.NORMAL_ENEMY_MAX_HP);
         setVelocity(EnemiesInfo.NORMAL_ENEMY_VELOCITY);
         setReward(EnemiesInfo.NORMAL_ENEMY_REWARD);

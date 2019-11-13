@@ -1,6 +1,7 @@
 package Entity.Enemies;
 
 public interface EnemiesInfo {
+    String NORMAL_ENEMY_IMAGE_PATH = "Model/Images/enemy.png";
     int NORMAL_ENEMY_VELOCITY = 3;
     double NORMAL_ENEMY_MAX_HP = 120;
     int NORMAL_ENEMY_REWARD = 10;

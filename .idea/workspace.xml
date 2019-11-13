@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Bach viet lai cau truc code" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Bach viet lai cau truc code">
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/backgroundlv1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/button_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/chooselv1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/emptycircle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/filledcircle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/subscene.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/TowerDefenseSubScene/LevelPicker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/TowerDefenseSubScene/TowerDefenseSubScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/LEVEL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Enemies/EnemiesInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Enemies/EnemiesInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Enemies/NormalEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Enemies/NormalEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Images/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/View/GameViewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/GameViewManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/View/ViewManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/ViewManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/View/ViewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/ViewManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Button/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Button/MenuButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Images/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Enemies/EnemiesInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Enemies/EnemiesInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Enemies/NormalEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Enemies/NormalEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GameViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameViewManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ViewManager.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +106,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -200,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573586222898</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Bach viet lai cau truc code">
+      <created>1573621203203</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573621203203</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -221,6 +258,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Bach viet lai cau truc code" />
     <option name="LAST_COMMIT_MESSAGE" value="Bach viet lai cau truc code" />

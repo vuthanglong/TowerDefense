@@ -36,7 +36,7 @@ public class GameViewManager {
     public static final int GAME_WIDTH = 900;
     public static final int GAME_HEIGHT = 600;
 
-    private Image BACKGROUND = new Image("Model/Images/background.png");
+    private Image BACKGROUND = new Image("Model/Images/backgroundlv1.png");
     private ImageView background = new ImageView(BACKGROUND);
 
     private Player player = new Player();
