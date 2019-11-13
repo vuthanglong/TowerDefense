@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Bach viet lai cau truc code">
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/backgroundlv1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/button_pressed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/chooselv1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/emptycircle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/filledcircle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/subscene.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/TowerDefenseSubScene/LevelPicker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/TowerDefenseSubScene/TowerDefenseSubScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/LEVEL.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="add them menu">
+      <change afterPath="$PROJECT_DIR$/src/Model/Button/ShopButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/1x/lv2.ai" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/tower1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/tower2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/tower3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Enemies/EnemiesInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Enemies/EnemiesInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Enemies/NormalEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Enemies/NormalEnemy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Model/Button/MenuButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Images/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/NormalTower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/Tower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/Tower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Images/yellow_button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Images/yellow_button_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game/View/GameViewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/GameViewManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/View/ViewManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/ViewManager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/View/ViewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/ViewManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Button/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Button/MenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Images/background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Enemies/EnemiesInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Enemies/EnemiesInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Enemies/NormalEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Enemies/NormalEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Images/backgroundlv1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Images/backgroundlv1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Images/yellow_button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Images/yellow_button_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Towers/MachineGunTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/MachineGunTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Towers/NormalTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/NormalTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Towers/SniperTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/SniperTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Towers/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/Tower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Towers/TowersInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/TowersInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GameViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameViewManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ViewManager.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -237,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573621203203</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add them menu">
+      <created>1573644071968</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573644071968</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -261,6 +277,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Bach viet lai cau truc code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bach viet lai cau truc code" />
+    <MESSAGE value="add them menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="add them menu" />
   </component>
 </project>

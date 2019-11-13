@@ -15,7 +15,7 @@ public class MachineGunTower extends ImageView implements Tower, TowersInfo {
     private double reloadTime;
 
     public MachineGunTower(double x, double y) {
-        super(new Image(""));
+        super(new Image("Model/Images/tower2.png"));
 
         this.setTranslateX(x);
         this.setTranslateY(y);
@@ -23,6 +23,10 @@ public class MachineGunTower extends ImageView implements Tower, TowersInfo {
         setReloadTime(TowersInfo.MACHINE_GUN_TOWER_RELOAD_TIME);
 
         initializeTowerListeners();
+    }
+
+    public String getImageUrl() {
+        return "Model/Images/tower2.png";
     }
 
     private void initializeTowerListeners() {

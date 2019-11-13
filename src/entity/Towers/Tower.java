@@ -10,4 +10,5 @@ public interface Tower {
     boolean canShot();
     double getTranslateX();
     double getTranslateY();
+    String getImageUrl();
 }

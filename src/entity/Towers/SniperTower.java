@@ -15,7 +15,7 @@ public class SniperTower extends ImageView implements Tower, TowersInfo {
     private double reloadTime;
 
     public SniperTower(double x, double y) {
-        super(new Image(""));
+        super(new Image("Model/Images/tower3.png"));
 
         this.setTranslateX(x);
         this.setTranslateY(y);
@@ -23,6 +23,10 @@ public class SniperTower extends ImageView implements Tower, TowersInfo {
         setReloadTime(TowersInfo.SNIPER_TOWER_RELOAD_TIME);
 
         initializeTowerListeners();
+    }
+
+    public String getImageUrl() {
+        return "Model/Images/tower3.png";
     }
 
     private void initializeTowerListeners() {

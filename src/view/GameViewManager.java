@@ -7,8 +7,10 @@ import Entity.Map.Mountain;
 import Entity.Map.Road;
 import Entity.Towers.Bullets.Bullet;
 import Entity.Towers.Bullets.NormalBullet;
+import Entity.Towers.MachineGunTower;
 import Entity.Towers.NormalTower;
 
+import Entity.Towers.SniperTower;
 import Entity.Towers.Tower;
 import Model.Button.MenuButton;
 
@@ -16,6 +18,7 @@ import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -165,7 +168,7 @@ public class GameViewManager {
             mountain.setOnMouseReleased(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    buildTower(mountain);
+                    showShop(mountain);
                 }
             });
             gamePane.getChildren().add(mountain);
@@ -179,7 +182,7 @@ public class GameViewManager {
                 mountain.setOnMouseReleased(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        buildTower(mountain);
+                        showShop(mountain);
                     }
                 });
                 gamePane.getChildren().add(mountain);
@@ -187,11 +190,56 @@ public class GameViewManager {
         }
     }
 
-    private void buildTower(Mountain mountain) {
+    private void showShop(Mountain mountain) {
+        Tower normalTower = new NormalTower(mountain.getTranslateX(), mountain.getTranslateY());
+        createShopButton(mountain, normalTower, 50, 520);
+        Tower machineGunTower = new MachineGunTower(mountain.getTranslateX(), mountain.getTranslateY());
+        createShopButton(mountain, machineGunTower,200, 520);
+        Tower sniperTower = new SniperTower(mountain.getTranslateX(), mountain.getTranslateY());
+        createShopButton(mountain, sniperTower,350, 520);
+    }
+
+    List<ImageView> shopButtons = new ArrayList<>();
+
+    private void createShopButton(Mountain mountain, Tower tower, int x, int y) {
+        ImageView towerImage = new ImageView(new Image(tower.getImageUrl()));
+        towerImage.setTranslateX(x);
+        towerImage.setTranslateY(y);
+        towerImage.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                buildTower(mountain, tower);
+                hideShop();
+            }
+        });
+        gamePane.getChildren().add(towerImage);
+        towerImage.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                towerImage.setEffect(new  DropShadow());
+            }
+        });
+        towerImage.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                towerImage.setEffect(null);
+            }
+        });
+        shopButtons.add(towerImage);
+    }
+
+    private void hideShop() {
+        for (int i = shopButtons.size() - 1; i >= 0 ; i--) {
+            ImageView buttonToRemove = shopButtons.get(i);
+            gamePane.getChildren().remove(buttonToRemove);
+        }
+    }
+
+    private void buildTower(Mountain mountain, Tower tower) {
         gamePane.getChildren().remove(mountain);
-        Tower tower = new NormalTower(mountain.getTranslateX(), mountain.getTranslateY());
-        towers.add(tower);
-        gamePane.getChildren().add((Node) tower);
+        Tower towerToAdd = tower;
+        towers.add(towerToAdd);
+        gamePane.getChildren().add((Node) towerToAdd);
     }
 
     private Enemy spawnEnemy() {

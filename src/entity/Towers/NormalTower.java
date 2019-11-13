@@ -15,7 +15,7 @@ public class NormalTower extends ImageView implements Tower, TowersInfo {
     private double reloadTime;
 
     public NormalTower(double x, double y) {
-        super(new Image("Model/Images/tower.png"));
+        super(new Image("Model/Images/tower1.png"));
 
         this.setTranslateX(x);
         this.setTranslateY(y);
@@ -23,6 +23,10 @@ public class NormalTower extends ImageView implements Tower, TowersInfo {
         setReloadTime(TowersInfo.NORMAL_TOWER_RELOAD_TIME);
 
         initializeTowerListeners();
+    }
+
+    public String getImageUrl() {
+        return "Model/Images/tower1.png";
     }
 
     private void initializeTowerListeners() {
