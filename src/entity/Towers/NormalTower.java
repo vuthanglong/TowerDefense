@@ -24,9 +24,12 @@ public class NormalTower extends ImageView implements Tower, TowersInfo {
 
         initializeTowerListeners();
     }
+    public int getTowerCost() {
+        return NORMAL_TOWER_COST;
+    }
 
     public String getImageUrl() {
-        return "Model/Images/tower1.png";
+        return NORMAL_TOWER_IMAGE_URL;
     }
 
     private void initializeTowerListeners() {
@@ -84,6 +87,12 @@ public class NormalTower extends ImageView implements Tower, TowersInfo {
     @Override
     public boolean canShot() {
         return ((System.currentTimeMillis() - lastAtk)/1000.0) >= reloadTime;
+    }
+
+    @Override
+    public String toString() {
+        return "NORMAL TOWER\n" +
+                "COST: $" + getTowerCost();
     }
 
     private void setRange(double range) {

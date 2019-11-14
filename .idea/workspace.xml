@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="add them menu">
-      <change afterPath="$PROJECT_DIR$/src/Model/Button/ShopButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/1x/lv2.ai" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/tower1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/tower2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Images/tower3.png" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="add shop">
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/hide_shop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/shop_button pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Images/shop_button.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/MachineGunTower$2.class" afterDir="false" />
@@ -24,20 +22,19 @@
       <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/SniperTower.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/Tower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/Tower.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Images/yellow_button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Model/Images/yellow_button_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/Entity/Towers/TowersInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Entity/Towers/TowersInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/GameViewManager$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game/View/GameViewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/View/GameViewManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Images/backgroundlv1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Images/backgroundlv1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Images/yellow_button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Images/yellow_button_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game/sample/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/sample/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Button/ShopButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Button/ShopButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Towers/MachineGunTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/MachineGunTower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Towers/NormalTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/NormalTower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Towers/SniperTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/SniperTower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Towers/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/Tower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Towers/TowersInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Towers/TowersInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GameViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameViewManager.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -253,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573644071968</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add shop">
+      <created>1573670919393</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573670919393</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -278,6 +282,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Bach viet lai cau truc code" />
     <MESSAGE value="add them menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="add them menu" />
+    <MESSAGE value="add shop" />
+    <option name="LAST_COMMIT_MESSAGE" value="add shop" />
   </component>
 </project>

@@ -11,4 +11,6 @@ public interface Tower {
     double getTranslateX();
     double getTranslateY();
     String getImageUrl();
+    int getTowerCost();
+    String toString();
 }

@@ -14,15 +14,19 @@ import Entity.Towers.SniperTower;
 import Entity.Towers.Tower;
 import Model.Button.MenuButton;
 
+import Model.Button.ShopButton;
 import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.effect.DropShadow;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import sample.Player;
@@ -43,7 +47,9 @@ public class GameViewManager {
     private ImageView background = new ImageView(BACKGROUND);
 
     private Player player = new Player();
+    private Label label = new Label();
 
+    private List<Label> towerLabels = new ArrayList<>();
     private List<Enemy> enemies = new ArrayList<>();
     private List<Mountain> mountains = new ArrayList<>();
     private List<Road> roads = new ArrayList<>();
@@ -92,6 +98,7 @@ public class GameViewManager {
             gamePane.getChildren().add(button);
             timer.stop();
         }
+        updatePlayerInfo();
         checkState();
     }
 
@@ -192,46 +199,108 @@ public class GameViewManager {
 
     private void showShop(Mountain mountain) {
         Tower normalTower = new NormalTower(mountain.getTranslateX(), mountain.getTranslateY());
+        Label normalLabel = towerInfo(normalTower, 120, 520);
         createShopButton(mountain, normalTower, 50, 520);
         Tower machineGunTower = new MachineGunTower(mountain.getTranslateX(), mountain.getTranslateY());
-        createShopButton(mountain, machineGunTower,200, 520);
+        Label machineLabel = towerInfo(machineGunTower, 370, 520);
+        createShopButton(mountain, machineGunTower,300, 520);
         Tower sniperTower = new SniperTower(mountain.getTranslateX(), mountain.getTranslateY());
-        createShopButton(mountain, sniperTower,350, 520);
+        Label sniperLabel = towerInfo(sniperTower, 620, 520);
+        createShopButton(mountain, sniperTower,550, 520);
+        gamePane.getChildren().addAll(normalLabel, machineLabel, sniperLabel);
+        towerLabels.add(normalLabel);
+        towerLabels.add(machineLabel);
+        towerLabels.add(sniperLabel);
+        createHideShopButton();
+    }
+
+    private void createHideShopButton() {
+        ImageView hideButton = new ImageView(new Image("Model/Images/hide_shop.png"));
+        hideButton.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                hideShop();
+            }
+        });
+        hideButton.setTranslateX(790);
+        hideButton.setTranslateY(520);
+        gamePane.getChildren().add(hideButton);
+        shopButtons.add(hideButton);
     }
 
     List<ImageView> shopButtons = new ArrayList<>();
+    List<ShopButton> buttons = new ArrayList<>();
 
     private void createShopButton(Mountain mountain, Tower tower, int x, int y) {
         ImageView towerImage = new ImageView(new Image(tower.getImageUrl()));
         towerImage.setTranslateX(x);
         towerImage.setTranslateY(y);
+        ShopButton button = new ShopButton();
+        button.setTranslateX(x-4);
+        button.setTranslateY(y-4);
+        gamePane.getChildren().add(button);
+        buttons.add(button);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    if(player.getGold() >= tower.getTowerCost())
+                    {
+                        player.subtractGold(tower.getTowerCost());
+                        buildTower(mountain, tower);
+                        hideShop();
+                    }
+                }
+        });
         towerImage.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                buildTower(mountain, tower);
-                hideShop();
+                if(player.getGold() >= tower.getTowerCost())
+                {
+                    player.subtractGold(tower.getTowerCost());
+                    buildTower(mountain, tower);
+                    hideShop();
+                }
             }
         });
         gamePane.getChildren().add(towerImage);
-        towerImage.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                towerImage.setEffect(new  DropShadow());
-            }
-        });
-        towerImage.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                towerImage.setEffect(null);
-            }
-        });
         shopButtons.add(towerImage);
+    }
+
+    private void updatePlayerInfo() {
+        gamePane.getChildren().remove(label);
+        label.setText(player.toString());
+        label.setLayoutX(785);
+        label.setLayoutY(0);
+        label.setTextFill(Color.WHITE);
+        label.setFont(new Font("Arial", 50));
+        gamePane.getChildren().add(label);
+    }
+
+    private Label towerInfo(Tower tower, int x, int y) {
+        Label towerLabel = new Label();
+        towerLabel.setText(tower.toString());
+        towerLabel.setTextFill(Color.WHITE);
+        towerLabel.setLayoutX(x);
+        towerLabel.setLayoutY(y+10);
+        towerLabel.setFont(new Font("Arial", 15));
+        return towerLabel;
     }
 
     private void hideShop() {
         for (int i = shopButtons.size() - 1; i >= 0 ; i--) {
             ImageView buttonToRemove = shopButtons.get(i);
             gamePane.getChildren().remove(buttonToRemove);
+            shopButtons.remove(buttonToRemove);
+        }
+        for (int i = buttons.size() - 1; i >= 0 ; i--) {
+            ShopButton btToRemove = buttons.get(i);
+            gamePane.getChildren().remove(btToRemove);
+            buttons.remove(btToRemove);
+        }
+        for (int i = towerLabels.size() - 1; i >= 0 ; i--) {
+            Label twL = towerLabels.get(i);
+            gamePane.getChildren().remove(twL);
+            towerLabels.remove(twL);
         }
     }
 

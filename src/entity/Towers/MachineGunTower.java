@@ -25,8 +25,12 @@ public class MachineGunTower extends ImageView implements Tower, TowersInfo {
         initializeTowerListeners();
     }
 
+    public int getTowerCost() {
+        return MACHINE_GUN_TOWER_COST;
+    }
+
     public String getImageUrl() {
-        return "Model/Images/tower2.png";
+        return MACHINE_GUN_TOWER_IMAGE_URL;
     }
 
     private void initializeTowerListeners() {
@@ -84,6 +88,12 @@ public class MachineGunTower extends ImageView implements Tower, TowersInfo {
     @Override
     public boolean canShot() {
         return ((System.currentTimeMillis() - lastAtk)/1000.0) >= reloadTime;
+    }
+
+    @Override
+    public String toString() {
+        return "MACHINE GUN TOWER\n" +
+                "COST: $" + getTowerCost();
     }
 
     private void setRange(double range) {
