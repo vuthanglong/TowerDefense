@@ -49,7 +49,7 @@ public class MachineGunBullet extends Rectangle implements Bullet, BulletsInfo {
 
     @Override
     public int getDamage() {
-        return damage;
+        return damage * tower.getLevel();
     }
 
     private void setDamage(int damage) {

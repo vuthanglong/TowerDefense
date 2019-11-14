@@ -1,8 +1,8 @@
 package sample;
 
 public class Player {
-    int health ;
-    int gold;
+    private int health ;
+    private int gold;
 
     public Player() {
         health = 5;
@@ -11,9 +11,7 @@ public class Player {
     public int getGold() {
         return gold;
     }
-    public int getHealth() {
-        return health;
-    }
+
     @Override
     public String toString() {
         return gold +"\n" + health;

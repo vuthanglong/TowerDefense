@@ -28,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.scene.shape.Rectangle;
 
 import sample.Player;
 
@@ -40,8 +41,8 @@ public class GameViewManager {
     private Stage gameStage;
     private Stage menuStage;
 
-    public static final int GAME_WIDTH = 900;
-    public static final int GAME_HEIGHT = 600;
+    private static final int GAME_WIDTH = 900;
+    private static final int GAME_HEIGHT = 600;
 
     private Image BACKGROUND = new Image("Model/Images/backgroundlv1.png");
     private ImageView background = new ImageView(BACKGROUND);
@@ -55,6 +56,9 @@ public class GameViewManager {
     private List<Road> roads = new ArrayList<>();
     private List<Tower> towers = new ArrayList<>();
     private List<Bullet> bullets = new ArrayList<>();
+    private List<ImageView> shopButtons = new ArrayList<>();
+    private List<ShopButton> buttons = new ArrayList<>();
+    private List<Node> upgradeButtons = new ArrayList<>();
 
     private AnimationTimer timer;
 
@@ -172,11 +176,9 @@ public class GameViewManager {
             mountains.add(mountain);
             mountain.setTranslateX(180 + 180 * i);
             mountain.setTranslateY(420);
-            mountain.setOnMouseReleased(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    showShop(mountain);
-                }
+            mountain.setOnMouseReleased(mouseEvent -> {
+                showShop(mountain);
+                hideUpgrade();
             });
             gamePane.getChildren().add(mountain);
         }
@@ -186,11 +188,9 @@ public class GameViewManager {
                 mountains.add(mountain);
                 mountain.setTranslateX(60 + 120 * i);
                 mountain.setTranslateY(120 + 180 * j);
-                mountain.setOnMouseReleased(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        showShop(mountain);
-                    }
+                mountain.setOnMouseReleased(mouseEvent -> {
+                    showShop(mountain);
+                    hideUpgrade();
                 });
                 gamePane.getChildren().add(mountain);
             }
@@ -216,20 +216,12 @@ public class GameViewManager {
 
     private void createHideShopButton() {
         ImageView hideButton = new ImageView(new Image("Model/Images/hide_shop.png"));
-        hideButton.setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                hideShop();
-            }
-        });
+        hideButton.setOnMouseReleased(mouseEvent -> hideShop());
         hideButton.setTranslateX(790);
         hideButton.setTranslateY(520);
         gamePane.getChildren().add(hideButton);
         shopButtons.add(hideButton);
     }
-
-    List<ImageView> shopButtons = new ArrayList<>();
-    List<ShopButton> buttons = new ArrayList<>();
 
     private void createShopButton(Mountain mountain, Tower tower, int x, int y) {
         ImageView towerImage = new ImageView(new Image(tower.getImageUrl()));
@@ -240,26 +232,22 @@ public class GameViewManager {
         button.setTranslateY(y-4);
         gamePane.getChildren().add(button);
         buttons.add(button);
-        button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    if(player.getGold() >= tower.getTowerCost())
-                    {
-                        player.subtractGold(tower.getTowerCost());
-                        buildTower(mountain, tower);
-                        hideShop();
-                    }
-                }
+        button.setOnAction(actionEvent -> {
+            if(player.getGold() >= tower.getTowerCost())
+            {
+                player.subtractGold(tower.getTowerCost());
+                buildTower(mountain, tower);
+                hideShop();
+                showUpgrade(tower);
+            }
         });
-        towerImage.setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if(player.getGold() >= tower.getTowerCost())
-                {
-                    player.subtractGold(tower.getTowerCost());
-                    buildTower(mountain, tower);
-                    hideShop();
-                }
+        towerImage.setOnMouseReleased(mouseEvent -> {
+            if(player.getGold() >= tower.getTowerCost())
+            {
+                player.subtractGold(tower.getTowerCost());
+                buildTower(mountain, tower);
+                hideShop();
+                showUpgrade(tower);
             }
         });
         gamePane.getChildren().add(towerImage);
@@ -306,9 +294,95 @@ public class GameViewManager {
 
     private void buildTower(Mountain mountain, Tower tower) {
         gamePane.getChildren().remove(mountain);
-        Tower towerToAdd = tower;
-        towers.add(towerToAdd);
-        gamePane.getChildren().add((Node) towerToAdd);
+        towers.add(tower);
+        Rectangle clickToUp = new Rectangle(60, 60, Color.TRANSPARENT);
+        clickToUp.setTranslateX(tower.getTranslateX());
+        clickToUp.setTranslateY(tower.getTranslateY());
+        clickToUp.setOnMouseClicked(mouseEvent -> {
+            if(player.getGold() >= tower.getTowerCost()){
+                showUpgrade(tower);
+            }
+        });
+        gamePane.getChildren().add((Node) tower);
+        gamePane.getChildren().add(clickToUp);
+    }
+
+    private void showUpgrade(Tower tower) {
+        createUpgradeButton(tower);
+        createSellButton(tower);
+        createHideButton();
+        gamePane.getChildren().add(updateLabel(tower));
+    }
+    private Label labelShowing;
+
+    private Label updateLabel(Tower tower) {
+        gamePane.getChildren().remove(labelShowing);
+        upgradeButtons.remove(labelShowing);
+        Label towerLabel = new Label();
+        towerLabel.setText("Level: " + tower.getLevel() + "\n"
+                + "Upgrade: $" + tower.getTowerCost() + "\n"
+                + "Sell: $" + tower.getTowerCost() * tower.getLevel() / 2);
+        towerLabel.setTextFill(Color.WHITE);
+        towerLabel.setLayoutX(50);
+        towerLabel.setLayoutY(520);
+        towerLabel.setFont(new Font("Arial", 15));
+        upgradeButtons.add(towerLabel);
+        labelShowing = towerLabel;
+        return labelShowing;
+    }
+
+    private void createHideButton() {
+        ImageView hideButton = new ImageView(new Image("Model/Images/hide_shop.png"));
+        hideButton.setOnMouseReleased(mouseEvent -> hideUpgrade());
+        hideButton.setTranslateX(790);
+        hideButton.setTranslateY(520);
+        gamePane.getChildren().add(hideButton);
+        upgradeButtons.add(hideButton);
+    }
+
+    private void hideUpgrade() {
+        for (int i = upgradeButtons.size() - 1; i >= 0 ; i--) {
+            Node toRemove = upgradeButtons.get(i);
+            gamePane.getChildren().remove(toRemove);
+            upgradeButtons.remove(i);
+        }
+    }
+
+    private void createUpgradeButton(Tower tower) {
+        ImageView upgradeButton = new ImageView(new Image("Model/Images/upgrade_button.png"));
+        upgradeButton.setTranslateX(200);
+        upgradeButton.setTranslateY(520);
+        gamePane.getChildren().add(upgradeButton);
+        upgradeButtons.add(upgradeButton);
+        upgradeButton.setOnMouseClicked(mouseEvent -> {
+            if(player.getGold() >= tower.getTowerCost()) {
+                tower.doUpgrade();
+                player.subtractGold(tower.getTowerCost());
+                gamePane.getChildren().add(updateLabel(tower));
+            }
+        });
+    }
+    private void createSellButton(Tower tower) {
+        ImageView sellButton = new ImageView(new Image("Model/Images/sell_button.png"));
+        sellButton.setTranslateX(300);
+        sellButton.setTranslateY(520);
+        gamePane.getChildren().add(sellButton);
+        upgradeButtons.add(sellButton);
+        sellButton.setOnMouseClicked(mouseEvent -> {
+                gamePane.getChildren().remove(tower);
+                towers.remove(tower);
+                player.subtractGold(tower.getTowerCost() * tower.getLevel() / -2);
+                Mountain mountain = new Mountain();
+                mountains.add(mountain);
+                mountain.setTranslateX(tower.getTranslateX());
+                mountain.setTranslateY(tower.getTranslateY());
+                mountain.setOnMouseReleased(mouseEvent1 -> {
+                    showShop(mountain);
+                    hideUpgrade();
+                });
+                gamePane.getChildren().add(mountain);
+                hideUpgrade();
+        });
     }
 
     private Enemy spawnEnemy() {

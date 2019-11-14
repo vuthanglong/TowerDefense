@@ -13,4 +13,6 @@ public interface Tower {
     String getImageUrl();
     int getTowerCost();
     String toString();
+    void doUpgrade();
+    int getLevel();
 }

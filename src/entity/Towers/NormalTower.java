@@ -13,15 +13,15 @@ public class NormalTower extends ImageView implements Tower, TowersInfo {
     private Enemy target = null;
     private long lastAtk = 0;
     private double reloadTime;
+    private int level;
 
     public NormalTower(double x, double y) {
-        super(new Image("Model/Images/tower1.png"));
-
+        super(new Image(TowersInfo.NORMAL_TOWER_IMAGE_URL));
+        level = 1;
         this.setTranslateX(x);
         this.setTranslateY(y);
         setRange(TowersInfo.NORMAL_TOWER_RANGE);
         setReloadTime(TowersInfo.NORMAL_TOWER_RELOAD_TIME);
-
         initializeTowerListeners();
     }
     public int getTowerCost() {
@@ -33,35 +33,8 @@ public class NormalTower extends ImageView implements Tower, TowersInfo {
     }
 
     private void initializeTowerListeners() {
-        setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
-
-                }
-            }
-        });
-
-        setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                setEffect(new DropShadow());
-            }
-        });
-
-        setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                setEffect(null);
-            }
-        });
-
-        setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-            }
-        });
+        setOnMouseEntered(mouseEvent -> setEffect(new DropShadow()));
+        setOnMouseExited(mouseEvent -> setEffect(null));
     }
 
     @Override
@@ -93,6 +66,16 @@ public class NormalTower extends ImageView implements Tower, TowersInfo {
     public String toString() {
         return "NORMAL TOWER\n" +
                 "COST: $" + getTowerCost();
+    }
+
+    @Override
+    public void doUpgrade() {
+        level++;
+    }
+
+    @Override
+    public int getLevel() {
+        return level;
     }
 
     private void setRange(double range) {

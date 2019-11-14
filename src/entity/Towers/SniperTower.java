@@ -13,10 +13,11 @@ public class SniperTower extends ImageView implements Tower, TowersInfo {
     private Enemy target = null;
     private long lastAtk = 0;
     private double reloadTime;
+    private int level;
 
     public SniperTower(double x, double y) {
         super(new Image("Model/Images/tower3.png"));
-
+        level = 1;
         this.setTranslateX(x);
         this.setTranslateY(y);
         setRange(TowersInfo.SNIPER_TOWER_RANGE);
@@ -34,35 +35,8 @@ public class SniperTower extends ImageView implements Tower, TowersInfo {
     }
 
     private void initializeTowerListeners() {
-        setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
-
-                }
-            }
-        });
-
-        setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                setEffect(new DropShadow());
-            }
-        });
-
-        setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                setEffect(null);
-            }
-        });
-
-        setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-            }
-        });
+        setOnMouseEntered(mouseEvent -> setEffect(new DropShadow()));
+        setOnMouseExited(mouseEvent -> setEffect(null));
     }
 
     @Override
@@ -94,6 +68,16 @@ public class SniperTower extends ImageView implements Tower, TowersInfo {
     public String toString() {
         return "SNIPER TOWER\n" +
                 "COST: $" + getTowerCost();
+    }
+
+    @Override
+    public void doUpgrade() {
+        level++;
+    }
+
+    @Override
+    public int getLevel() {
+        return level;
     }
 
     private void setRange(double range) {
