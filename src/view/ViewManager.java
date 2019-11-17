@@ -1,6 +1,7 @@
 package View;
 
 import Model.Button.MenuButton;
+import Model.Sound.GameMediaPlayer;
 import Model.TowerDefenseSubScene.LevelPicker;
 import Model.TowerDefenseSubScene.TowerDefenseSubScene;
 import javafx.event.ActionEvent;
@@ -29,6 +30,7 @@ public class ViewManager {
     private LEVEL chosenLevel;
 
     private TowerDefenseSubScene levelChooserScene;
+    private GameMediaPlayer gameMediaPlayer = new GameMediaPlayer();
 
     public ViewManager() {
         mainPane = new AnchorPane();
@@ -39,7 +41,7 @@ public class ViewManager {
         createCreditButtons();
         createHelpButtons();
         createExitButtons();
-
+        gameMediaPlayer.getMediaPlayer(0).play();
         setSubScene();
     }
 
@@ -98,6 +100,7 @@ public class ViewManager {
             public void handle(ActionEvent actionEvent) {
                 GameViewManager gameManager = new GameViewManager();
                 gameManager.createNewGame(mainStage);
+                gameMediaPlayer.getMediaPlayer(0).stop();
             }
         });
         return startButton;

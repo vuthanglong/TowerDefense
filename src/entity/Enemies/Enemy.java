@@ -18,4 +18,5 @@ public interface Enemy {
     HealthBar getInnerHealthRect();
     void beGetDamage(int damage);
     int getReward();
+    int getArmor();
 }

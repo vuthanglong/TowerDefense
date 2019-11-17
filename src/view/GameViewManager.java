@@ -15,15 +15,13 @@ import Entity.Towers.Tower;
 import Model.Button.MenuButton;
 
 import Model.Button.ShopButton;
+import Model.Sound.GameMediaPlayer;
 import javafx.animation.AnimationTimer;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -49,6 +47,8 @@ public class GameViewManager {
 
     private Player player = new Player();
     private Label label = new Label();
+    private Label labelShowing;
+    private GameMediaPlayer gameMediaPlayer = new GameMediaPlayer();
 
     private List<Label> towerLabels = new ArrayList<>();
     private List<Enemy> enemies = new ArrayList<>();
@@ -71,6 +71,8 @@ public class GameViewManager {
 
     public GameViewManager() {
         initializeStage();
+        gameMediaPlayer.getMediaPlayer(1).stop();
+        gameMediaPlayer.getMediaPlayer(1).play();
     }
 
     private void initializeStage() {
@@ -101,6 +103,8 @@ public class GameViewManager {
             button.setTranslateY(250);
             gamePane.getChildren().add(button);
             timer.stop();
+            gameMediaPlayer.getMediaPlayer(1).stop();
+            gameMediaPlayer.getMediaPlayer(8).play();
         }
         updatePlayerInfo();
         checkState();
@@ -111,6 +115,8 @@ public class GameViewManager {
             Enemy enemy = enemies.get(i);
             if(enemy.isPassed() && !enemy.isDead()) {
                 player.getDamage();
+                gameMediaPlayer.getMediaPlayer(9).stop();
+                gameMediaPlayer.getMediaPlayer(9).play();
                 enemy.setDead(true);
                 enemy.doDestroy();
                 enemies.remove(i);
@@ -141,6 +147,8 @@ public class GameViewManager {
                     bullets.add(bullet);
                     gamePane.getChildren().add((Node) bullet);
                     tower.setLastAtk(System.currentTimeMillis());
+                    gameMediaPlayer.getMediaPlayer(6).stop();
+                    gameMediaPlayer.getMediaPlayer(6).play();
                 }
             }
         }
@@ -213,7 +221,6 @@ public class GameViewManager {
         towerLabels.add(sniperLabel);
         createHideShopButton();
     }
-
     private void createHideShopButton() {
         ImageView hideButton = new ImageView(new Image("Model/Images/hide_shop.png"));
         hideButton.setOnMouseReleased(mouseEvent -> hideShop());
@@ -222,7 +229,6 @@ public class GameViewManager {
         gamePane.getChildren().add(hideButton);
         shopButtons.add(hideButton);
     }
-
     private void createShopButton(Mountain mountain, Tower tower, int x, int y) {
         ImageView towerImage = new ImageView(new Image(tower.getImageUrl()));
         towerImage.setTranslateX(x);
@@ -239,6 +245,8 @@ public class GameViewManager {
                 buildTower(mountain, tower);
                 hideShop();
                 showUpgrade(tower);
+                gameMediaPlayer.getMediaPlayer(3).stop();
+                gameMediaPlayer.getMediaPlayer(3).play();
             }
         });
         towerImage.setOnMouseReleased(mouseEvent -> {
@@ -248,12 +256,13 @@ public class GameViewManager {
                 buildTower(mountain, tower);
                 hideShop();
                 showUpgrade(tower);
+                gameMediaPlayer.getMediaPlayer(3).stop();
+                gameMediaPlayer.getMediaPlayer(3).play();
             }
         });
         gamePane.getChildren().add(towerImage);
         shopButtons.add(towerImage);
     }
-
     private void updatePlayerInfo() {
         gamePane.getChildren().remove(label);
         label.setText(player.toString());
@@ -263,7 +272,6 @@ public class GameViewManager {
         label.setFont(new Font("Arial", 50));
         gamePane.getChildren().add(label);
     }
-
     private Label towerInfo(Tower tower, int x, int y) {
         Label towerLabel = new Label();
         towerLabel.setText(tower.toString());
@@ -273,7 +281,6 @@ public class GameViewManager {
         towerLabel.setFont(new Font("Arial", 15));
         return towerLabel;
     }
-
     private void hideShop() {
         for (int i = shopButtons.size() - 1; i >= 0 ; i--) {
             ImageView buttonToRemove = shopButtons.get(i);
@@ -291,7 +298,6 @@ public class GameViewManager {
             towerLabels.remove(twL);
         }
     }
-
     private void buildTower(Mountain mountain, Tower tower) {
         gamePane.getChildren().remove(mountain);
         towers.add(tower);
@@ -301,6 +307,7 @@ public class GameViewManager {
         clickToUp.setOnMouseClicked(mouseEvent -> {
             if(player.getGold() >= tower.getTowerCost()){
                 showUpgrade(tower);
+                hideShop();
             }
         });
         gamePane.getChildren().add((Node) tower);
@@ -313,8 +320,6 @@ public class GameViewManager {
         createHideButton();
         gamePane.getChildren().add(updateLabel(tower));
     }
-    private Label labelShowing;
-
     private Label updateLabel(Tower tower) {
         gamePane.getChildren().remove(labelShowing);
         upgradeButtons.remove(labelShowing);
@@ -330,7 +335,6 @@ public class GameViewManager {
         labelShowing = towerLabel;
         return labelShowing;
     }
-
     private void createHideButton() {
         ImageView hideButton = new ImageView(new Image("Model/Images/hide_shop.png"));
         hideButton.setOnMouseReleased(mouseEvent -> hideUpgrade());
@@ -339,7 +343,6 @@ public class GameViewManager {
         gamePane.getChildren().add(hideButton);
         upgradeButtons.add(hideButton);
     }
-
     private void hideUpgrade() {
         for (int i = upgradeButtons.size() - 1; i >= 0 ; i--) {
             Node toRemove = upgradeButtons.get(i);
@@ -347,7 +350,6 @@ public class GameViewManager {
             upgradeButtons.remove(i);
         }
     }
-
     private void createUpgradeButton(Tower tower) {
         ImageView upgradeButton = new ImageView(new Image("Model/Images/upgrade_button.png"));
         upgradeButton.setTranslateX(200);
@@ -359,6 +361,8 @@ public class GameViewManager {
                 tower.doUpgrade();
                 player.subtractGold(tower.getTowerCost());
                 gamePane.getChildren().add(updateLabel(tower));
+                gameMediaPlayer.getMediaPlayer(4).stop();
+                gameMediaPlayer.getMediaPlayer(4).play();
             }
         });
     }

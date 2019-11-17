@@ -18,6 +18,7 @@ public class SmallerEnemy extends ImageView implements Enemy, EnemiesInfo {
     private int velocity;
     private double HP;
     private double maxHP;
+    private int armor;
 
     private boolean dead = false;
     private int reward;
@@ -107,12 +108,17 @@ public class SmallerEnemy extends ImageView implements Enemy, EnemiesInfo {
 
     @Override
     public void beGetDamage(int damage) {
-        HP -= damage;
+        HP -= damage - getArmor();
     }
 
     @Override
     public int getReward() {
         return reward;
+    }
+
+    @Override
+    public int getArmor() {
+        return armor;
     }
 
     private void setHP(double HP) {
