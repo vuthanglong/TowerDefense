@@ -6,7 +6,7 @@ public enum  LEVEL {
 
     private String urlLevel;
 
-    private LEVEL(String urlLevel) {
+    LEVEL(String urlLevel) {
         this.urlLevel = urlLevel;
     }
 

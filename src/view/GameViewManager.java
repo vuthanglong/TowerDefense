@@ -42,9 +42,6 @@ public class GameViewManager {
     private static final int GAME_WIDTH = 900;
     private static final int GAME_HEIGHT = 600;
 
-    private Image BACKGROUND = new Image("Model/Images/backgroundlv1.png");
-    private ImageView background = new ImageView(BACKGROUND);
-
     private Player player = new Player();
     private Label label = new Label();
     private Label labelShowing;
@@ -69,17 +66,16 @@ public class GameViewManager {
         gameStage.show();
     }
 
-    public GameViewManager() {
-        initializeStage();
+    public GameViewManager(int lv) {
+        initializeStage(lv);
         gameMediaPlayer.getMediaPlayer(1).stop();
         gameMediaPlayer.getMediaPlayer(1).play();
     }
 
-    private void initializeStage() {
+    private void initializeStage(int lv) {
         gamePane = new AnchorPane();
         gameScene = new Scene(gamePane, GAME_WIDTH, GAME_HEIGHT);
         gameStage = new Stage();
-        gamePane.getChildren().add(background);
         timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -88,7 +84,7 @@ public class GameViewManager {
         };
         timer.start();
         gameStage.setScene(gameScene);
-        createMap();
+        createMap(lv);
     }
 
     private void onUpdate() {
@@ -163,45 +159,122 @@ public class GameViewManager {
         }
     }
 
-    private void createMap() {
-        roads.add(new Road(0, 60));
-        roads.add(new Road(60, 60));
-        roads.add(new Road(120, 60));
-        for (int i = 0; i < 5; i++) {
-            roads.add(new Road(120, 60 + 60 * i));
-        }
-        for (int i = 0; i < 13; i++) {
-            roads.add(new Road(120 + 60 * i,60 + 60 * 5));
-        }
-        for (int i = 0; i < 20; i++) {
-            roads.get(i).setNextRoad(roads.get(i + 1));
-        }
-        for (Road road : roads) {
-            gamePane.getChildren().add(road);
-        }
-        for(int i =0; i < 4; i++) {
-            Mountain mountain = new Mountain();
-            mountains.add(mountain);
-            mountain.setTranslateX(180 + 180 * i);
-            mountain.setTranslateY(420);
-            mountain.setOnMouseReleased(mouseEvent -> {
-                showShop(mountain);
-                hideUpgrade();
-            });
-            gamePane.getChildren().add(mountain);
-        }
-        for(int i = 0; i < 2; i++) {
-            for(int j = 0; j < 2; j++) {
+    private void createMap(int lv) {
+        if(lv == 1) {
+            Image BACKGROUND = new Image("Model/Images/backgroundlv1.png");
+            ImageView background = new ImageView(BACKGROUND);
+            gamePane.getChildren().add(background);
+            roads.add(new Road(0, 60));
+            roads.add(new Road(60, 60));
+            roads.add(new Road(120, 60));
+            for (int i = 0; i < 5; i++) {
+                roads.add(new Road(120, 60 + 60 * i));
+            }
+            for (int i = 0; i < 13; i++) {
+                roads.add(new Road(120 + 60 * i,60 + 60 * 5));
+            }
+            for (int i = 0; i < 20; i++) {
+                roads.get(i).setNextRoad(roads.get(i + 1));
+            }
+            for (Road road : roads) {
+                gamePane.getChildren().add(road);
+            }
+            for(int i =0; i < 4; i++) {
                 Mountain mountain = new Mountain();
                 mountains.add(mountain);
-                mountain.setTranslateX(60 + 120 * i);
-                mountain.setTranslateY(120 + 180 * j);
+                mountain.setTranslateX(180 + 180 * i);
+                mountain.setTranslateY(420);
                 mountain.setOnMouseReleased(mouseEvent -> {
                     showShop(mountain);
                     hideUpgrade();
                 });
                 gamePane.getChildren().add(mountain);
             }
+            for(int i = 0; i < 2; i++) {
+                for(int j = 0; j < 2; j++) {
+                    Mountain mountain = new Mountain();
+                    mountains.add(mountain);
+                    mountain.setTranslateX(60 + 120 * i);
+                    mountain.setTranslateY(120 + 180 * j);
+                    mountain.setOnMouseReleased(mouseEvent -> {
+                        showShop(mountain);
+                        hideUpgrade();
+                    });
+                    gamePane.getChildren().add(mountain);
+                }
+            }
+        }
+        if(lv == 2) {
+            Image BACKGROUND = new Image("Model/Images/backgroundlv2.png");
+            ImageView background = new ImageView(BACKGROUND);
+            gamePane.getChildren().add(background);
+            for(int i = 0; i < 3; i++) {
+                roads.add(new Road(60 * i, 60));
+            }
+            for (int i = 0; i < 2; i++) {
+                roads.add(new Road(120, 120 + 60 * i));
+            }
+            for (int i = 0; i < 7 ; i++) {
+                roads.add(new Road(180 + 60 * i, 180));
+            }
+            for (int i = 0; i < 3; i++) {
+                roads.add(new Road(540, 240 + 60 * i));
+            }
+            for (int i = 0; i < 4; i++) {
+                roads.add(new Road(600 + 60 * i, 360));
+            }
+            roads.add(new Road(900 - 120, 420));
+            for (int i = 0; i < 19; i++) {
+                roads.get(i).setNextRoad(roads.get(i+1));
+            }
+            for(Road road : roads) {
+                gamePane.getChildren().add(road);
+            }
+            for (int i = 0; i < 4; i++) {
+                Mountain mountain = new Mountain();
+                mountains.add(mountain);
+                mountain.setTranslateX(60 + 180 * i);
+                mountain.setTranslateY(120);
+                mountain.setOnMouseReleased(mouseEvent -> {
+                    showShop(mountain);
+                    hideUpgrade();
+                });
+                gamePane.getChildren().add(mountain);
+            }
+            for (int i = 0; i < 3; i++) {
+                Mountain mountain = new Mountain();
+                mountains.add(mountain);
+                mountain.setTranslateX(120 + 180 * i);
+                mountain.setTranslateY(240);
+                mountain.setOnMouseReleased(mouseEvent -> {
+                    showShop(mountain);
+                    hideUpgrade();
+                });
+                gamePane.getChildren().add(mountain);
+            }
+            for (int i = 0; i < 3; i++) {
+                Mountain mountain = new Mountain();
+                mountains.add(mountain);
+                mountain.setTranslateX(60 * 8 + 180 * i);
+                mountain.setTranslateY(420);
+                mountain.setOnMouseReleased(mouseEvent -> {
+                    showShop(mountain);
+                    hideUpgrade();
+                });
+                gamePane.getChildren().add(mountain);
+            }
+            for (int i = 0; i < 2; i++) {
+                Mountain mountain = new Mountain();
+                mountains.add(mountain);
+                mountain.setTranslateX(60 * 10 + 180 * i);
+                mountain.setTranslateY(300);
+                mountain.setOnMouseReleased(mouseEvent -> {
+                    showShop(mountain);
+                    hideUpgrade();
+                });
+                gamePane.getChildren().add(mountain);
+            }
+
         }
     }
 
