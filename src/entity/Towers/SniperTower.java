@@ -1,6 +1,9 @@
 package Entity.Towers;
 
 import Entity.Enemies.Enemy;
+import Entity.Towers.Bullets.Bullet;
+import Entity.Towers.Bullets.MachineGunBullet;
+import Entity.Towers.Bullets.SniperBullet;
 import javafx.event.EventHandler;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -78,6 +81,11 @@ public class SniperTower extends ImageView implements Tower, TowersInfo {
     @Override
     public int getLevel() {
         return level;
+    }
+
+    @Override
+    public Bullet getBullet() {
+        return new SniperBullet(this, this.getTarget());
     }
 
     private void setRange(double range) {

@@ -1,6 +1,7 @@
 package Entity.Towers;
 
 import Entity.Enemies.Enemy;
+import Entity.Towers.Bullets.Bullet;
 
 public interface Tower {
     double getRange();
@@ -15,4 +16,5 @@ public interface Tower {
     String toString();
     void doUpgrade();
     int getLevel();
+    Bullet getBullet();
 }

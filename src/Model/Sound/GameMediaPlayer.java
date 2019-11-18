@@ -8,10 +8,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameMediaPlayer {
+    private boolean muted;
     private List<MediaPlayer> mediaPlayerList = new ArrayList<>();
 
     public GameMediaPlayer() {
         buildList();
+    }
+
+    public void mute() {
+        if(!muted) {
+            for (MediaPlayer media : mediaPlayerList) {
+                media.setVolume(0);
+            }
+            muted = true;
+        }
+        else {
+            for (MediaPlayer media : mediaPlayerList) {
+                media.setVolume(1.5);
+            }
+            muted = false;
+        }
     }
 
     private void buildList()

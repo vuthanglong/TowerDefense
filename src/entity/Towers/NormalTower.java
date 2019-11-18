@@ -1,6 +1,8 @@
 package Entity.Towers;
 
 import Entity.Enemies.Enemy;
+import Entity.Towers.Bullets.Bullet;
+import Entity.Towers.Bullets.MachineGunBullet;
 import javafx.event.EventHandler;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -76,6 +78,11 @@ public class NormalTower extends ImageView implements Tower, TowersInfo {
     @Override
     public int getLevel() {
         return level;
+    }
+
+    @Override
+    public Bullet getBullet() {
+        return new MachineGunBullet(this, this.getTarget());
     }
 
     private void setRange(double range) {

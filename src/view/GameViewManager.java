@@ -59,6 +59,7 @@ public class GameViewManager {
     private long lastSpawn;
     private int a[] = {1, 1, 1, 1, 2, 2, 2, 3, 3, 2, 1, 1, 1, 4};
     private int count = 0;
+    private int killCount = 0;
 
     private AnimationTimer timer;
 
@@ -91,6 +92,7 @@ public class GameViewManager {
         createMap(lv);
         createPauseButton();
     }
+    private boolean muted;
 
     private void createPauseButton() {
         ImageView pause = new ImageView(new Image("Model/Images/pause.png"));
@@ -101,6 +103,13 @@ public class GameViewManager {
             timer.stop();
         });
         gamePane.getChildren().add(pause);
+        ImageView mute = new ImageView(new Image("Model/Images/mute.png"));
+        mute.setTranslateX(70);
+        mute.setTranslateY(0);
+        mute.setOnMouseClicked(mouseEvent -> {
+            gameMediaPlayer.mute();
+        });
+        gamePane.getChildren().add(mute);
     }
 
     private void showPauseMenu() {
@@ -143,14 +152,15 @@ public class GameViewManager {
     }
 
     private void onUpdate() {
+        if(killCount == a.length) showAfterLevelScene("YOU WON");
         for(Enemy enemy : enemies)
             if(!enemy.isDead()) enemy.move();
         if((System.currentTimeMillis() - lastSpawn)/1000.0 >= 1 && count < a.length) {
-                enemies.add(spawnEnemy(a[count++]));
-                lastSpawn = System.currentTimeMillis();
+            enemies.add(spawnEnemy(a[count++]));
+            lastSpawn = System.currentTimeMillis();
         }
         if(player.dead()){
-            showAfterLevelScene();
+            showAfterLevelScene("YOU LOST");
             timer.stop();
             gameMediaPlayer.getMediaPlayer(1).stop();
             gameMediaPlayer.getMediaPlayer(8).play();
@@ -158,9 +168,9 @@ public class GameViewManager {
         updatePlayerInfo();
         checkState();
     }
-    private void showAfterLevelScene() {
+    private void showAfterLevelScene(String txt) {
         Label label = new Label();
-        label.setText("YOU LOST");
+        label.setText(txt);
         label.setTextFill(Color.WHITE);
         label.setFont(new Font("Arial", 50));
         label.setTranslateX(320);
@@ -209,12 +219,14 @@ public class GameViewManager {
                 enemy.setDead(true);
                 enemy.doDestroy();
                 enemies.remove(i);
+                killCount++;
             }
             if(enemy.getHP() <= 0) {
                 enemy.setDead(true);
                 enemy.doDestroy();
                 player.getReward(enemy.getReward());
                 enemies.remove(i);
+                killCount ++;
             }
         }
         for (Tower tower : towers) {
