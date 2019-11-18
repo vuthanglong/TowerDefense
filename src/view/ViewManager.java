@@ -124,51 +124,28 @@ public class ViewManager {
         MenuButton button = new MenuButton("START");
         button.setLayoutY(150);
         button.setLayoutX(80);
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                /*GameViewManager gameManager = new GameViewManager();
-                gameManager.createNewGame(mainStage);*/
-                //showSubScene(startSubScene);
-                showSubScene(levelChooserScene);
-            }
-        });
+        button.setOnAction(actionEvent -> showSubScene(levelChooserScene));
         mainPane.getChildren().add(button);
     }
     public void createHelpButtons() {
         MenuButton button = new MenuButton("HELP");
         button.setLayoutY(250);
         button.setLayoutX(80);
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                showSubScene(helpSubScene);
-            }
-        });
+        button.setOnAction(actionEvent -> showSubScene(helpSubScene));
         mainPane.getChildren().add(button);
     }
     public void createCreditButtons() {
         MenuButton button = new MenuButton("CREDIT");
         button.setLayoutY(350);
         button.setLayoutX(80);
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                showSubScene(creditSubScene);
-            }
-        });
+        button.setOnAction(actionEvent -> showSubScene(creditSubScene));
         mainPane.getChildren().add(button);
     }
     public void createExitButtons() {
         MenuButton button = new MenuButton("EXIT");
         button.setLayoutY(450);
         button.setLayoutX(80);
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                mainStage.close();
-            }
-        });
+        button.setOnAction(actionEvent -> mainStage.close());
         mainPane.getChildren().add(button);
     }
 }

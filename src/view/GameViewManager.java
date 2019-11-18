@@ -41,6 +41,7 @@ public class GameViewManager {
 
     private static final int GAME_WIDTH = 900;
     private static final int GAME_HEIGHT = 600;
+    private int lv;
 
     private Player player = new Player();
     private Label label = new Label();
@@ -68,6 +69,7 @@ public class GameViewManager {
 
     public GameViewManager(int lv) {
         initializeStage(lv);
+        this.lv = lv;
         gameMediaPlayer.getMediaPlayer(1).stop();
         gameMediaPlayer.getMediaPlayer(1).play();
     }
@@ -85,6 +87,57 @@ public class GameViewManager {
         timer.start();
         gameStage.setScene(gameScene);
         createMap(lv);
+        createPauseButton();
+    }
+
+    private void createPauseButton() {
+        ImageView pause = new ImageView(new Image("Model/Images/pause.png"));
+        pause.setTranslateX(0);
+        pause.setTranslateY(0);
+        pause.setOnMouseClicked(mouseEvent -> {
+            showPauseMenu();
+            timer.stop();
+        });
+        gamePane.getChildren().add(pause);
+    }
+
+    private void showPauseMenu() {
+        ImageView backScene = new ImageView(new Image("Model/Images/subscene.png"));
+        backScene.setTranslateX(200);
+        backScene.setTranslateY(85);
+        MenuButton button = new MenuButton("RESTART");
+        button.setTranslateX(350);
+        button.setTranslateY(200);
+        button.setOnAction(mouseEvent -> {
+            GameViewManager gameManager = new GameViewManager(lv);
+            gameManager.createNewGame(gameStage);
+            gameMediaPlayer.getMediaPlayer(0).stop();
+        });
+        MenuButton menuButton = new MenuButton("MAIN MENU");
+        menuButton.setTranslateX(350);
+        menuButton.setTranslateY(300);
+        menuButton.setOnAction(mouseEvent -> {
+            gameStage.hide();
+            Stage primaryStage;
+            ViewManager manager = new ViewManager();
+            primaryStage = manager.getMainStage();
+            primaryStage.setTitle("Demo");
+            primaryStage.show();
+        });
+        MenuButton exitButton = new MenuButton("EXIT");
+        exitButton.setTranslateX(350);
+        exitButton.setTranslateY(400);
+        exitButton.setOnAction(mouseEvent -> {
+            gameStage.close();
+        });
+        MenuButton resumeButton = new MenuButton("RESUME");
+        resumeButton.setTranslateX(350);
+        resumeButton.setTranslateY(100);
+        resumeButton.setOnAction(mouseEvent -> {
+            timer.start();
+            gamePane.getChildren().removeAll(backScene, button, menuButton, exitButton, resumeButton);
+        });
+        gamePane.getChildren().addAll(backScene, button, menuButton, exitButton, resumeButton);
     }
 
     private void onUpdate() {
@@ -94,16 +147,53 @@ public class GameViewManager {
             enemies.add(spawnEnemy());
         }
         if(player.dead()){
-            MenuButton button = new MenuButton("GGWP NOOB!!!");
-            button.setTranslateX(350);
-            button.setTranslateY(250);
-            gamePane.getChildren().add(button);
+            showAfterLevelScene();
             timer.stop();
             gameMediaPlayer.getMediaPlayer(1).stop();
             gameMediaPlayer.getMediaPlayer(8).play();
         }
         updatePlayerInfo();
         checkState();
+    }
+    private void showAfterLevelScene() {
+        Label label = new Label();
+        label.setText("YOU LOST");
+        label.setTextFill(Color.WHITE);
+        label.setFont(new Font("Arial", 50));
+        label.setTranslateX(320);
+        label.setTranslateY(125);
+        ImageView backScene = new ImageView(new Image("Model/Images/subscene.png"));
+        backScene.setTranslateX(200);
+        backScene.setTranslateY(100);
+        gamePane.getChildren().addAll(backScene, label);
+        MenuButton button = new MenuButton("RESTART");
+        button.setTranslateX(350);
+        button.setTranslateY(200);
+        button.setOnAction(mouseEvent -> {
+            timer.stop();
+            GameViewManager gameManager = new GameViewManager(lv);
+            gameManager.createNewGame(gameStage);
+            gameMediaPlayer.getMediaPlayer(0).stop();
+        });
+        MenuButton menuButton = new MenuButton("MAIN MENU");
+        menuButton.setTranslateX(350);
+        menuButton.setTranslateY(300);
+        menuButton.setOnAction(mouseEvent -> {
+            timer.stop();
+            gameStage.hide();
+            Stage primaryStage;
+            ViewManager manager = new ViewManager();
+            primaryStage = manager.getMainStage();
+            primaryStage.setTitle("Demo");
+            primaryStage.show();
+        });
+        MenuButton exitButton = new MenuButton("EXIT");
+        exitButton.setTranslateX(350);
+        exitButton.setTranslateY(400);
+        exitButton.setOnAction(mouseEvent -> {
+            gameStage.close();
+        });
+        gamePane.getChildren().addAll(button, menuButton, exitButton);
     }
 
     private void checkState() {
