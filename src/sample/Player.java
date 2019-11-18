@@ -6,7 +6,7 @@ public class Player {
 
     public Player() {
         health = 5;
-        gold = 100;
+        gold = 150;
     }
     public int getGold() {
         return gold;

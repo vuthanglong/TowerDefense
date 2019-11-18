@@ -24,7 +24,7 @@ public class BossEnemy extends ImageView implements Enemy, EnemiesInfo {
     private int reward;
 
     public BossEnemy() {
-        super(new Image(""));
+        super(new Image(EnemiesInfo.BOSS_ENEMY_IMAGE_PATH));
 
         setMaxHP(EnemiesInfo.BOSS_ENEMY_MAX_HP);
         setVelocity(EnemiesInfo.BOSS_ENEMY_VELOCITY);

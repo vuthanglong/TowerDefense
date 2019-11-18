@@ -1,8 +1,7 @@
 package View;
 
-import Entity.Enemies.Enemy;
+import Entity.Enemies.*;
 
-import Entity.Enemies.NormalEnemy;
 import Entity.Map.Mountain;
 import Entity.Map.Road;
 import Entity.Towers.Bullets.Bullet;
@@ -57,6 +56,9 @@ public class GameViewManager {
     private List<ImageView> shopButtons = new ArrayList<>();
     private List<ShopButton> buttons = new ArrayList<>();
     private List<Node> upgradeButtons = new ArrayList<>();
+    private long lastSpawn;
+    private int a[] = {1, 1, 1, 1, 2, 2, 2, 3, 3, 2, 1, 1, 1, 4};
+    private int count = 0;
 
     private AnimationTimer timer;
 
@@ -117,7 +119,7 @@ public class GameViewManager {
         menuButton.setTranslateX(350);
         menuButton.setTranslateY(300);
         menuButton.setOnAction(mouseEvent -> {
-            gameStage.hide();
+            gameStage.close();
             Stage primaryStage;
             ViewManager manager = new ViewManager();
             primaryStage = manager.getMainStage();
@@ -143,8 +145,9 @@ public class GameViewManager {
     private void onUpdate() {
         for(Enemy enemy : enemies)
             if(!enemy.isDead()) enemy.move();
-        if (Math.random() < 0.0075) {
-            enemies.add(spawnEnemy());
+        if((System.currentTimeMillis() - lastSpawn)/1000.0 >= 1 && count < a.length) {
+                enemies.add(spawnEnemy(a[count++]));
+                lastSpawn = System.currentTimeMillis();
         }
         if(player.dead()){
             showAfterLevelScene();
@@ -229,7 +232,7 @@ public class GameViewManager {
             }
             if(tower.getTarget() != null) {
                 if(tower.canShot()) {
-                    Bullet bullet = new NormalBullet(tower, tower.getTarget());
+                    Bullet bullet = tower.getBullet();
                     bullets.add(bullet);
                     gamePane.getChildren().add((Node) bullet);
                     tower.setLastAtk(System.currentTimeMillis());
@@ -520,7 +523,7 @@ public class GameViewManager {
         gamePane.getChildren().add(upgradeButton);
         upgradeButtons.add(upgradeButton);
         upgradeButton.setOnMouseClicked(mouseEvent -> {
-            if(player.getGold() >= tower.getTowerCost()) {
+            if(player.getGold() >= tower.getTowerCost() && tower.getLevel() < 3) {
                 tower.doUpgrade();
                 player.subtractGold(tower.getTowerCost());
                 gamePane.getChildren().add(updateLabel(tower));
@@ -552,12 +555,34 @@ public class GameViewManager {
         });
     }
 
-    private Enemy spawnEnemy() {
-        Enemy enemy = new NormalEnemy();
-        enemy.setCurrentRoad(roads.get(0));
-        gamePane.getChildren().add((Node) enemy);
-        gamePane.getChildren().addAll(enemy.getOuterHealthRect(), enemy.getInnerHealthRect());
-        return enemy;
+    private Enemy spawnEnemy(int i) {
+        switch (i) {
+            case 1 :
+                Enemy enemy = new NormalEnemy();
+                enemy.setCurrentRoad(roads.get(0));
+                gamePane.getChildren().add((Node) enemy);
+                gamePane.getChildren().addAll(enemy.getOuterHealthRect(), enemy.getInnerHealthRect());
+                return enemy;
+            case 2 :
+                Enemy enemy2 = new TankerEnemy();
+                enemy2.setCurrentRoad(roads.get(0));
+                gamePane.getChildren().add((Node) enemy2);
+                gamePane.getChildren().addAll(enemy2.getOuterHealthRect(), enemy2.getInnerHealthRect());
+                return enemy2;
+            case 3 :
+                Enemy enemy3 = new SmallerEnemy();
+                enemy3.setCurrentRoad(roads.get(0));
+                gamePane.getChildren().add((Node) enemy3);
+                gamePane.getChildren().addAll(enemy3.getOuterHealthRect(), enemy3.getInnerHealthRect());
+                return enemy3;
+            case 4 :
+                Enemy enemy4 = new BossEnemy();
+                enemy4.setCurrentRoad(roads.get(0));
+                gamePane.getChildren().add((Node) enemy4);
+                gamePane.getChildren().addAll(enemy4.getOuterHealthRect(), enemy4.getInnerHealthRect());
+                return enemy4;
+        }
+        return new NormalEnemy();
     }
 
     private double checkDistance(Enemy enemy, Tower tower) {

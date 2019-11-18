@@ -24,8 +24,7 @@ public class SmallerEnemy extends ImageView implements Enemy, EnemiesInfo {
     private int reward;
 
     public SmallerEnemy() {
-        super(new Image(""));
-
+        super(new Image(EnemiesInfo.SMALLER_ENEMY_IMAGE_PATH));
         setMaxHP(EnemiesInfo.SMALLER_ENEMY_MAX_HP);
         setVelocity(EnemiesInfo.SMALLER_ENEMY_VELOCITY);
         setReward(EnemiesInfo.SMALLER_ENEMY_REWARD);

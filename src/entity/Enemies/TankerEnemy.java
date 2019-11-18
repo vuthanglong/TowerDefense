@@ -24,7 +24,7 @@ public class TankerEnemy extends ImageView implements Enemy, EnemiesInfo {
     private int reward;
 
     public TankerEnemy() {
-        super(new Image(""));
+        super(new Image(EnemiesInfo.TANKER_ENEMY_IMAGE_PATH));
 
         setMaxHP(EnemiesInfo.TANKER_ENEMY_MAX_HP);
         setVelocity(EnemiesInfo.TANKER_ENEMY_VELOCITY);
